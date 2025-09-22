@@ -110,13 +110,13 @@ namespace Book
             // Measure the size of the text
             SizeF textSize = e.Graphics.MeasureString(text, font);
             // Calculate rectangle to center the text
-            float rectX = printableArea.X + (printableArea.Width - textSize.Width) / 2;
+            float rectX = printableArea.X;// + (printableArea.Width - textSize.Width) / 2;
             float rectY = printableArea.Y;// + (printableArea.Height - textSize.Height) / 2;
             RectangleF rect = new RectangleF(rectX, rectY, textSize.Width, textSize.Height);
             // Create StringFormat for center alignment and RTL if needed
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;          // Horizontal center
-            format.LineAlignment = StringAlignment.Center;      // Vertical center
+            format.LineAlignment = StringAlignment.Near;      // Vertical center
             format.FormatFlags = StringFormatFlags.DirectionRightToLeft;  // For RTL text
                                                                           // Draw border rectangle
             using (Pen pen = new Pen(Color.Black, 2))
@@ -133,7 +133,7 @@ namespace Book
 
 
             //StringFormat format = new StringFormat();
-            //format.Alignment = StringAlignment.Center; // راست‌چین کردن متن
+            //format.Alignment = StringAlignment.Far; // راست‌چین کردن متن
             //format.FormatFlags = StringFormatFlags.DirectionRightToLeft; // جهت راست به چپ
 
             //// متن چاپ شده
