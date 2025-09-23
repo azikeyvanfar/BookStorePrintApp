@@ -95,6 +95,7 @@ namespace Book
             // نمایش پنجره چاپ (اختیاری)
             PrintDialog printDialog = new PrintDialog();
             printDialog.Document = printDocument;
+            printDocument.DefaultPageSettings.Margins = new Margins(20, 20, 20, 20);
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
                 printDocument.Print();
