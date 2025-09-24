@@ -95,11 +95,29 @@ namespace Book
             // نمایش پنجره چاپ (اختیاری)
             PrintDialog printDialog = new PrintDialog();
             printDialog.Document = printDocument;
-            printDocument.DefaultPageSettings.Margins = new Margins(20, 20, 20, 20);
-            if (printDialog.ShowDialog() == DialogResult.OK)
+
+
+
+            printDocument.PrinterSettings.PrinterName = "BIXOLON SRP-350";
+
+            // تنظیمات صفحه (عرض رول معمولا 80mm یا 58mm هست)
+            printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", 280, 600); // واحد 1/100 اینچ → 80mm ≈ 315
+            printDocument.DefaultPageSettings.Margins = new Margins(5, 5, 5, 5);
+
+
+            //if (printDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    printDocument.Print();
+            //}
+
+            PrintPreviewDialog preview = new PrintPreviewDialog
             {
-                printDocument.Print();
-            }
+                Document = printDocument,
+                Width = 800,
+                Height = 600
+            };
+
+            preview.ShowDialog();
         }
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
